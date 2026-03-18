@@ -23,3 +23,29 @@ def build_graph():
         G.add_edges_from(h)
 
     return G, weighted == "yes"
+def choose_layout(G):
+    print("\nChoose Layout:")
+    print("1. Spring Layout")
+    print("2. Circular Layout")
+    print("3. Random Layout")
+    print("4. Planar Layout")
+
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        return nx.spring_layout(G)
+    elif choice == 2:
+        return nx.circular_layout(G)
+    elif choice == 3:
+        return nx.random_layout(G)
+    elif choice == 4:
+        return nx.planar_layout(G)
+    else:
+        print("Invalid choice, using spring layout.")
+        return nx.spring_layout(G)
+
+def visualize_graph(G, pos, weighted):
+    nx.draw(G, pos, with_labels=True, node_color="lightblue", edge_color="gray")
+    if weighted:
+        labels = nx.get_edge_attributes(G, 'weight')
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+    plt.show()
