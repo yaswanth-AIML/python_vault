@@ -49,3 +49,24 @@ def visualize_graph(G, pos, weighted):
         labels = nx.get_edge_attributes(G, 'weight')
         nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     plt.show()
+def run_dijkstra(G, pos):
+    source = input("Enter source node: ")
+    target = input("Enter target node: ")
+
+    try:
+        path = nx.dijkstra_path(G, source=source, target=target)
+        length = nx.dijkstra_path_length(G, source=source, target=target)
+        print("Shortest path:", path)
+        print("Path length:", length)
+
+        # Draw graph with highlighted path
+        nx.draw(G, pos, with_labels=True, node_color="lightblue", edge_color="gray")
+        labels = nx.get_edge_attributes(G, 'weight')
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+
+        path_edges = list(zip(path, path[1:]))
+        nx.draw_networkx_edges(G, pos, edgelist=path_edges, edge_color="red", width=2)
+
+        plt.show()
+    except nx.NetworkXNoPath:
+        print(f"No path exists between {source} and {target}.")
