@@ -70,3 +70,30 @@ def run_dijkstra(G, pos):
         plt.show()
     except nx.NetworkXNoPath:
         print(f"No path exists between {source} and {target}.")
+def main():
+    print("WELCOME TO GRAPHS")
+    while True:
+        print("\nENTER")
+        print("1 for Graph Visualization")
+        print("2 for Dijkstra's Algorithm")
+        print("3 for Exit")
+        choice = int(input("Enter Your Choice: "))
+
+        if choice == 1:
+            G, weighted = build_graph()
+            pos = choose_layout(G)
+            visualize_graph(G, pos, weighted)
+
+        elif choice == 2:
+            G, weighted = build_graph()
+            pos = choose_layout(G)
+            run_dijkstra(G, pos)
+
+        elif choice == 3:
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice, try again.")
+
+if __name__ == "__main__":
+    main()
