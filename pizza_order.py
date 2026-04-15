@@ -1,5 +1,6 @@
 print("hi hello welcome to \n Pizza Hut")
 bill=0
+
 size=input("which pizza do you want S OR M OR L \n S=100,M=100,L=300 :")
 if size=='s' or size=='S':
     bill+=100
@@ -36,7 +37,4 @@ elif che=='no':
 else :
     print("enter the appropriate one ")
     quit()
-
-print("the total bill is ",bill)
-
-    
+print("the total bill is ",bill)    
