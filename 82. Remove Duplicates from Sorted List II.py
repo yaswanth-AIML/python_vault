@@ -10,12 +10,12 @@ class Solution:
         while curr:
             li[curr.val]=li.get(curr.val, 0)+1
             curr=curr.next
-        dummy=ListNode(0)
-        new=dummy
+        own=ListNode(0)
+        new=own
         curr=head
         while curr:
             if li[curr.val]==1:
                 new.next=ListNode(curr.val)
                 new=new.next
             curr=curr.next
-        return dummy.next
+        return own.next
