@@ -1,0 +1,9 @@
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        right=len(num)-1
+        while right>-1:
+            k=num[right]
+            if int(k)%2==1:
+                return num[:right+1]
+            right-=1
+        return num[:right+1]
